@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 from random import *
 from math import *
 
-# code final
-
 
 def tc(rayon,x0,y0):
 	theta = np.linspace(0, 2*np.pi, 100)  # Angles de 0 à 2*pi
@@ -15,7 +13,7 @@ def tc(rayon,x0,y0):
 	return xc,yc
 
 
-def intermittentSearch(x_i,y_i,phasei,x_0,y_0,tau1,tau2,D,V,a,b,N) : #fonction qui va créer la zone de recherche, et effectuer la recherche en temps réel
+def intermittentSearch(x_i,y_i,phasei,x_0,y_0,tau1,tau2,D,V,a,b,N) : #fonction qui va créer la zone de recherche, et effectuer la recherche en temps réel (mettre b = 0 pour chercher une seule cible (correspond à un espace de recherche infini))
 	# création zone de recherche avec cible
 	# pas&temps
 	k = 0.1
@@ -45,7 +43,7 @@ def intermittentSearch(x_i,y_i,phasei,x_0,y_0,tau1,tau2,D,V,a,b,N) : #fonction q
 			y_sol.append(y_i + k*V*i*sin(direc))
 		for i in range(len(x_sol)):
 			plt.clf()
-			#plt.axis([-20+x_i,20+x_i,-20,20])
+			# plt.axis([-20+x_i,20+x_i,-20,20]) # remettre pour que l'écran suive le checheur en temps réel
 			if b == 0 :
 				plt.plot(x_0,y_0,marker='o',label="cible")
 			else :
@@ -199,7 +197,7 @@ def intermittentSearch(x_i,y_i,phasei,x_0,y_0,tau1,tau2,D,V,a,b,N) : #fonction q
 	return "cible non trouvée en {} étapes...".format(end)
 
 
-# diffusion
+# Diffusion
 # Paramètres de la simulation
 
 def diffusion(x_start,y_start,T,k,D) :
